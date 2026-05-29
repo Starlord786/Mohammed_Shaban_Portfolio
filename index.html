@@ -1,724 +1,461 @@
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=VT323&display=swap');
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-  :root {
-    --cream: #f5f0e8;
-    --cream2: #ede7d5;
-    --cream3: #e3dbc8;
-    --ink: #1a1208;
-    --ink2: #2e2410;
-    --ink3: #4a3f2a;
-    --rust: #8b2e0a;
-    --rust2: #a33d15;
-    --faded: #7a6e58;
-    --rule: #2e2410;
-  }
+:root{
+  --bg:#0a0a0f;
+  --bg2:#0f0f18;
+  --bg3:#13131f;
+  --card:#111120;
+  --amber:#ffb700;
+  --amber2:#ff8c00;
+  --cyan:#00e5ff;
+  --cyan2:#00bcd4;
+  --green:#39ff14;
+  --green2:#00ff41;
+  --red:#ff3366;
+  --text:#e8e0cc;
+  --muted:#6b6580;
+  --border:#2a2545;
+  --border2:#3d3760;
+}
 
-  body { background: var(--cream); color: var(--ink); }
+html,body{width:100%;margin:0;padding:0;background:#0a0a0f;}
 
-  .portfolio {
-    background: var(--cream);
-    font-family: 'IM Fell English', Georgia, serif;
-    min-height: 100vh;
-    padding: 0 0 60px;
-    position: relative;
-  }
+.port{
+  background:var(--bg);
+  font-family:'Rajdhani',sans-serif;
+  min-height:100vh;
+  width:100%;
+  padding-bottom:60px;
+  position:relative;
+  overflow-x:hidden;
+}
 
-  .portfolio::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(30,20,5,0.04) 31px, rgba(30,20,5,0.04) 32px);
-    pointer-events: none;
-    z-index: 0;
-  }
+.port::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.13) 2px,rgba(0,0,0,0.13) 4px);
+  pointer-events:none;
+  z-index:999;
+}
 
-  .port-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.inner{width:100%;max-width:100%;padding:0 48px;}
+@media(max-width:768px){.inner{padding:0 20px;}}
 
-  /* MASTHEAD */
-  .masthead {
-    border-bottom: 4px double var(--rule);
-    padding: 28px 0 18px;
-    text-align: center;
-  }
-  .masthead-edition {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--faded);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .masthead-title {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: clamp(42px, 8vw, 80px);
-    color: var(--ink);
-    line-height: 1;
-    margin-bottom: 2px;
-    letter-spacing: -1px;
-  }
-  .masthead-sub {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: var(--faded);
-    letter-spacing: 3px;
-    margin-bottom: 14px;
-  }
-  .masthead-rule { border: none; border-top: 2px solid var(--rule); margin: 10px 0 6px; }
-  .masthead-rule2 { border: none; border-top: 1px solid var(--rule); margin: 3px 0 10px; }
-  .masthead-deck {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    color: var(--ink3);
-    letter-spacing: 1px;
-  }
-  .masthead-links {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .masthead-links a {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    color: var(--rust);
-    text-decoration: none;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border: 1px solid var(--ink3);
-    border-right: none;
-    transition: background 0.15s;
-  }
-  .masthead-links a:last-child { border-right: 1px solid var(--ink3); }
-  .masthead-links a:hover { background: var(--ink); color: var(--cream); }
+/* ── HERO ── */
+.hero{
+  padding:48px 0 36px;
+  border-bottom:1px solid var(--border2);
+  position:relative;
+  width:100%;
+}
+.hero-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:20px;
+}
+.hero-tag{
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:var(--cyan);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border:1px solid var(--cyan2);
+  background:rgba(0,229,255,0.05);
+}
+.hero-date{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:2px;
+}
+.hero-name{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(72px,12vw,160px);
+  line-height:0.88;
+  letter-spacing:6px;
+  background:linear-gradient(135deg,var(--amber) 0%,var(--amber2) 50%,#ff4500 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+  animation:glow 3s ease-in-out infinite;
+}
+.hero-title{
+  font-family:'Share Tech Mono',monospace;
+  font-size:14px;
+  color:var(--cyan);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+.hero-title span{color:var(--amber);margin:0 10px;}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;}
+.hero-bio{
+  font-size:17px;
+  font-weight:400;
+  color:var(--text);
+  max-width:700px;
+  line-height:1.7;
+  opacity:0.85;
+}
+.hero-links{display:flex;gap:0;flex-wrap:wrap;}
+.hero-link{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:9px 18px;
+  border:1px solid var(--border2);
+  border-right:none;
+  color:var(--muted);
+  text-decoration:none;
+  transition:all 0.2s;
+  background:var(--card);
+  white-space:nowrap;
+}
+.hero-link:last-child{border-right:1px solid var(--border2);}
+.hero-link:hover{color:var(--amber);border-color:var(--amber);background:rgba(255,183,0,0.07);position:relative;z-index:1;}
 
-  /* SECTION HEADERS */
-  .section-header {
-    margin: 36px 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-rule { flex: 1; border: none; border-top: 1px solid var(--rule); }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--ink2);
-    white-space: nowrap;
-    padding: 0 4px;
-  }
+/* ── STATS ── */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border2);
+  margin:28px 0 0;
+  background:var(--card);
+  width:100%;
+}
+@media(max-width:480px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat{padding:20px 16px;text-align:center;border-right:1px solid var(--border2);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Bebas Neue',cursive;font-size:42px;color:var(--amber);display:block;line-height:1;letter-spacing:2px;}
+.stat-l{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
 
-  /* COLUMNS LAYOUT */
-  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .col3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-  @media (max-width: 600px) { .col2, .col3 { grid-template-columns: 1fr; } }
+/* ── SECTION HEADERS ── */
+.sh{display:flex;align-items:center;gap:14px;margin:44px 0 20px;width:100%;}
+.sh-line{flex:1;height:1px;background:linear-gradient(90deg,var(--amber),transparent);}
+.sh-line.rev{background:linear-gradient(90deg,transparent,var(--amber));}
+.sh-label{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--amber);white-space:nowrap;padding:5px 12px;border:1px solid var(--amber2);background:rgba(255,183,0,0.05);}
 
-  /* ABOUT BOX */
-  .about-box {
-    border: 1px solid var(--ink3);
-    padding: 20px 22px;
-    background: var(--cream2);
-    position: relative;
-  }
-  .about-box::before {
-    content: '❧';
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--cream2);
-    padding: 0 8px;
-    font-size: 18px;
-    color: var(--ink3);
-  }
-  .about-headline {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 22px;
-    line-height: 1.2;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-  .about-dek {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--ink3);
-    margin-bottom: 12px;
-  }
-  .about-body {
-    font-family: 'IM Fell English', serif;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink2);
-    column-count: 2;
-    column-gap: 20px;
-  }
-  @media (max-width: 500px) { .about-body { column-count: 1; } }
-  .drop-cap::first-letter {
-    float: left;
-    font-family: 'Playfair Display', serif;
-    font-size: 58px;
-    font-weight: 900;
-    line-height: 0.75;
-    margin: 6px 6px 0 0;
-    color: var(--rust);
-  }
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border:1px solid var(--border2);width:100%;}
+@media(max-width:640px){.about-grid{grid-template-columns:1fr;}}
+.about-left{padding:28px 32px;border-right:1px solid var(--border2);background:var(--card);}
+.about-right{padding:28px 32px;background:var(--bg2);}
+.about-headline{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:3px;color:var(--amber);margin-bottom:12px;line-height:1.1;}
+.about-body{font-size:15px;line-height:1.85;color:var(--text);opacity:0.82;}
+.terminal-block{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--green);line-height:2.1;}
+.terminal-block .prompt{color:var(--cyan);}
+.terminal-block .val{color:var(--text);}
+.terminal-block .dim{color:var(--muted);}
 
-  /* STATS ROW */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border: 1px solid var(--ink3);
-    margin: 0;
-  }
-  @media (max-width: 500px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
-  .stat-cell {
-    padding: 14px 10px;
-    text-align: center;
-    border-right: 1px solid var(--ink3);
-  }
-  .stat-cell:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--rust);
-    display: block;
-  }
-  .stat-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--faded);
-  }
+/* ── SKILLS ── */
+.skills-cats{display:flex;flex-direction:column;gap:16px;width:100%;}
+.skill-row{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.skill-cat-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;min-width:100px;padding-top:7px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.stag{font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 14px;border:1px solid var(--border2);color:var(--text);background:var(--card);letter-spacing:1px;transition:all 0.2s;cursor:default;}
+.stag:hover{border-color:var(--amber);color:var(--amber);background:rgba(255,183,0,0.06);}
+.stag.cyan:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,0.06);}
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 8px;
-  }
-  .skill-tag {
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    padding: 6px 10px;
-    border: 1px solid var(--ink3);
-    color: var(--ink2);
-    text-align: center;
-    letter-spacing: 0.5px;
-    background: var(--cream2);
-    transition: background 0.15s, color 0.15s;
-    cursor: default;
-  }
-  .skill-tag:hover { background: var(--ink); color: var(--cream); }
-  .skill-cat {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--faded);
-    margin-bottom: 8px;
-    margin-top: 14px;
-  }
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);width:100%;}
+@media(max-width:640px){.proj-grid{grid-template-columns:1fr;}}
+.proj-card{background:var(--card);padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;transition:background 0.2s;}
+.proj-card:hover{background:var(--bg3);}
+.proj-card::before{content:attr(data-n);position:absolute;top:10px;right:16px;font-family:'Bebas Neue',cursive;font-size:56px;color:rgba(255,183,0,0.05);line-height:1;pointer-events:none;}
+.proj-stack{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;}
+.proj-title{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;color:var(--amber);line-height:1.1;}
+.proj-body{font-size:14px;line-height:1.75;color:var(--text);opacity:0.75;flex:1;}
+.proj-links{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
+.plink{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--border2);color:var(--muted);text-decoration:none;transition:all 0.2s;}
+.plink:hover{border-color:var(--cyan);color:var(--cyan);}
+.plink.amber{border-color:rgba(255,183,0,0.3);color:var(--amber);}
+.plink.amber:hover{border-color:var(--amber);background:rgba(255,183,0,0.08);}
+.soon{font-family:'Share Tech Mono',monospace;font-size:10px;padding:6px 12px;border:1px dashed var(--muted);color:var(--muted);letter-spacing:1px;}
 
-  /* PROJECTS */
-  .project-card {
-    border: 1px solid var(--ink3);
-    padding: 18px;
-    background: var(--cream2);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .project-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 900;
-    color: var(--cream3);
-    position: absolute;
-    top: 8px;
-    right: 14px;
-    line-height: 1;
-    user-select: none;
-  }
-  .project-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .project-stack {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--rust);
-    text-transform: uppercase;
-  }
-  .project-body {
-    font-family: 'IM Fell English', serif;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--ink3);
-    flex: 1;
-  }
-  .project-links { display: flex; gap: 8px; margin-top: 4px; }
-  .proj-link {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border: 1px solid var(--ink3);
-    color: var(--ink2);
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .proj-link:hover { background: var(--ink); color: var(--cream); }
-  .soon-badge {
-    font-family: 'Courier Prime', monospace;
-    font-size: 9px;
-    padding: 2px 7px;
-    background: var(--cream3);
-    border: 1px dashed var(--faded);
-    color: var(--faded);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    align-self: flex-start;
-  }
+/* ── HYBIX — NEON GREEN ── */
+.hybix-box{
+  border:1px solid var(--green2);
+  background:var(--card);
+  position:relative;
+  overflow:hidden;
+  width:100%;
+}
+.hybix-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),var(--green2),transparent);
+}
+.hybix-box::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),var(--green2),transparent);
+}
+.hybix-inner{padding:36px 40px;}
+.hybix-label{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--green);
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.hybix-headline{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(36px,6vw,64px);
+  letter-spacing:6px;
+  line-height:1;
+  margin-bottom:6px;
+}
+.hybix-headline span.hy{color:var(--green);}
+.hybix-headline span.bix{color:var(--green2);}
+.hybix-headline span.rest{color:var(--text);}
+.hybix-date{
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:var(--green2);
+  letter-spacing:2px;
+  margin-bottom:22px;
+  opacity:0.8;
+}
+.hybix-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+@media(max-width:560px){.hybix-cols{grid-template-columns:1fr;}}
+.hybix-desc{font-size:15px;line-height:1.85;color:var(--text);opacity:0.82;}
+.hybix-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.hybix-list li{
+  font-family:'Share Tech Mono',monospace;
+  font-size:12px;
+  color:var(--text);
+  letter-spacing:1px;
+  padding-left:18px;
+  position:relative;
+  opacity:0.85;
+}
+.hybix-list li::before{content:'>';position:absolute;left:0;color:var(--green);font-weight:bold;}
 
-  /* HYBIX */
-  .hybix-box {
-    border: 2px solid var(--ink);
-    padding: 22px;
-    background: var(--cream2);
-    position: relative;
-  }
-  .hybix-corner {
-    position: absolute;
-    font-size: 11px;
-    color: var(--faded);
-    font-family: 'Courier Prime', monospace;
-  }
-  .hybix-corner.tl { top: 6px; left: 8px; }
-  .hybix-corner.tr { top: 6px; right: 8px; }
-  .hybix-corner.bl { bottom: 6px; left: 8px; }
-  .hybix-corner.br { bottom: 6px; right: 8px; }
-  .hybix-headline {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-style: italic;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 4px;
-    color: var(--ink);
-  }
-  .hybix-sub {
-    text-align: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--faded);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .hybix-body {
-    font-family: 'IM Fell English', serif;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink2);
-    column-count: 2;
-    column-gap: 24px;
-  }
-  @media (max-width: 500px) { .hybix-body { column-count: 1; } }
-  .hybix-bullets {
-    list-style: none;
-    margin-top: 14px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-  @media (max-width: 500px) { .hybix-bullets { grid-template-columns: 1fr; } }
-  .hybix-bullets li {
-    font-family: 'IM Fell English', serif;
-    font-size: 13px;
-    color: var(--ink3);
-    padding-left: 16px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .hybix-bullets li::before { content: '✦'; position: absolute; left: 0; color: var(--rust); font-size: 10px; top: 3px; }
+/* ── CERTS & LEETCODE ── */
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;}
+@media(max-width:520px){.bottom-grid{grid-template-columns:1fr;}}
+.cert-box{border:1px solid var(--border2);background:var(--card);}
+.cert-header{padding:11px 18px;border-bottom:1px solid var(--border2);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;background:var(--bg2);}
+.cert-item{padding:14px 18px;border-bottom:1px solid var(--border2);display:flex;flex-direction:column;gap:4px;}
+.cert-item:last-child{border-bottom:none;}
+.cert-name{font-size:15px;font-weight:600;color:var(--text);letter-spacing:1px;}
+.cert-issuer{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
 
-  /* CERTS */
-  .cert-card {
-    border: 1px solid var(--ink3);
-    padding: 14px 16px;
-    background: var(--cream2);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .cert-name {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .cert-issuer {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--faded);
-    text-transform: uppercase;
-  }
+.lc-box{border:1px solid var(--border2);background:var(--card);}
+.lc-header{padding:11px 18px;border-bottom:1px solid var(--border2);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;background:var(--bg2);}
+.lc-body{padding:22px 18px;}
+.lc-num{font-family:'Bebas Neue',cursive;font-size:64px;color:var(--amber);line-height:1;letter-spacing:4px;display:block;}
+.lc-sub{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block;}
+.lc-note{font-size:14px;line-height:1.75;color:var(--text);opacity:0.7;margin-bottom:16px;}
+.lc-link{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--amber2);color:var(--amber);text-decoration:none;display:inline-block;transition:all 0.2s;}
+.lc-link:hover{background:rgba(255,183,0,0.1);border-color:var(--amber);}
 
-  /* LEETCODE */
-  .lc-box {
-    border: 1px solid var(--ink3);
-    padding: 18px 20px;
-    background: var(--cream2);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .lc-badge {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 38px;
-    color: var(--rust);
-    line-height: 1;
-  }
-  .lc-info { flex: 1; min-width: 160px; }
-  .lc-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .lc-body {
-    font-family: 'IM Fell English', serif;
-    font-style: italic;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--ink3);
-  }
-  .lc-link {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border: 1px solid var(--rust);
-    color: var(--rust);
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-    transition: background 0.15s, color 0.15s;
-  }
-  .lc-link:hover { background: var(--rust); color: var(--cream); }
+/* ── CONTACT ── */
+.contact-row{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border2);background:var(--card);width:100%;}
+@media(max-width:640px){.contact-row{grid-template-columns:repeat(2,1fr);}}
+.contact-cell{padding:18px 12px;text-align:center;border-right:1px solid var(--border2);text-decoration:none;transition:background 0.2s;display:block;}
+.contact-cell:last-child{border-right:none;}
+.contact-cell:hover{background:rgba(255,183,0,0.06);}
+.cc-l{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.cc-v{font-size:13px;font-weight:600;color:var(--amber);display:block;letter-spacing:1px;}
 
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0;
-    border: 1px solid var(--ink3);
-  }
-  .contact-cell {
-    padding: 16px;
-    border-right: 1px solid var(--ink3);
-    text-align: center;
-    text-decoration: none;
-    transition: background 0.15s;
-    display: block;
-  }
-  .contact-cell:last-child { border-right: none; }
-  .contact-cell:hover { background: var(--ink); }
-  .contact-cell:hover .cc-label, .contact-cell:hover .cc-val { color: var(--cream) !important; }
-  .cc-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--faded);
-    display: block;
-    margin-bottom: 4px;
-  }
-  .cc-val {
-    font-family: 'IM Fell English', serif;
-    font-size: 13px;
-    color: var(--rust);
-    display: block;
-    word-break: break-all;
-  }
+/* ── FOOTER ── */
+.footer{text-align:center;padding-top:40px;border-top:1px solid var(--border2);margin-top:48px;width:100%;}
+.footer-glyph{font-family:'VT323',monospace;font-size:32px;color:var(--amber);display:block;margin-bottom:10px;letter-spacing:4px;}
+.footer p{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);line-height:2.2;}
 
-  /* FOOTER */
-  .port-footer {
-    text-align: center;
-    padding-top: 32px;
-    border-top: 3px double var(--rule);
-    margin-top: 40px;
-  }
-  .port-footer p {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--faded);
-  }
-  .port-footer .ornament {
-    font-size: 22px;
-    color: var(--ink3);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .divider-ornament {
-    text-align: center;
-    margin: 6px 0;
-    font-size: 16px;
-    color: var(--ink3);
-    letter-spacing: 8px;
-  }
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,183,0,0.4));}50%{filter:drop-shadow(0 0 28px rgba(255,183,0,0.85));}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.cursor{display:inline-block;width:9px;height:15px;background:var(--green);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px;}
 </style>
 
-<div class="portfolio">
-<div class="port-inner">
+<div class="port">
+<div class="inner">
 
-  <!-- MASTHEAD -->
-  <div class="masthead">
-    <div class="masthead-edition">
-      <span>Est. 2024 &mdash; Virudhunagar, Tamil Nadu</span>
-      <span>Vol. I &bull; Issue 2026</span>
-      <span>Co-Founder &bull; Full Stack Dev</span>
+  <div class="hero">
+    <div class="hero-top">
+      <div class="hero-tag">// Software Developer · Full Stack · Java</div>
+      <div class="hero-date">SYS::2026 &bull; VIRUDHUNAGAR.TN.IN</div>
     </div>
-    <hr class="masthead-rule">
-    <div class="masthead-title">Mohammed Shaban</div>
-    <div class="masthead-sub">Software Developer &amp; Technology Correspondent</div>
-    <hr class="masthead-rule2">
-    <div class="masthead-deck">Building Real Products for Real Clients &bull; Java &bull; Full-Stack Web &bull; B.E. CSE '27</div>
-    <div class="masthead-links">
-      <a href="https://github.com/Starlord786" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/mohammed-shaban-434188291" target="_blank">LinkedIn</a>
-      <a href="https://hybixgroups.com" target="_blank">Hybix</a>
-      <a href="https://leetcode.com/u/Mohammed_Shaban/" target="_blank">LeetCode</a>
-      <a href="mailto:imshabanoffl@gmail.com">Mail</a>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-row" style="margin-top:20px;">
-    <div class="stat-cell">
-      <span class="stat-num">3+</span>
-      <span class="stat-label">Real Clients</span>
-    </div>
-    <div class="stat-cell">
-      <span class="stat-num">2+</span>
-      <span class="stat-label">Yrs Building</span>
-    </div>
-    <div class="stat-cell">
-      <span class="stat-num">7.56</span>
-      <span class="stat-label">CGPA</span>
-    </div>
-    <div class="stat-cell">
-      <span class="stat-num">9+</span>
-      <span class="stat-label">LC Problems</span>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ About the Developer ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="about-box">
-    <div class="about-headline">A Student Who Ships to Production</div>
-    <div class="about-dek">"Most students write code for grades. I write code for clients."</div>
-    <div class="about-body drop-cap">
-      While most of his peers are building todo apps for assignments, Mohammed Shaban co-founded Hybix — a student-run technology venture that delivers real full-stack solutions to real clients in Virudhunagar. Since January 2024, he has led end-to-end development using React, Next.js, Node.js and MongoDB, from gathering requirements straight through to production deployment.
-      A second-year CSE student at AAA College of Engineering and Technology, Shaban balances academics with active software development — maintaining a CGPA of 7.56 while running a client-facing startup, managing a collaborative engineering team, and sharpening his DSA fundamentals on LeetCode.
-    </div>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ Technical Repertoire ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="skill-cat">Languages</div>
-  <div class="skills-grid">
-    <div class="skill-tag">JavaScript</div>
-    <div class="skill-tag">Java</div>
-    <div class="skill-tag">Python</div>
-    <div class="skill-tag">C / C++</div>
-  </div>
-  <div class="skill-cat">Frameworks &amp; Libraries</div>
-  <div class="skills-grid">
-    <div class="skill-tag">React.js</div>
-    <div class="skill-tag">Next.js</div>
-    <div class="skill-tag">Node.js</div>
-    <div class="skill-tag">Express.js</div>
-    <div class="skill-tag">Tailwind CSS</div>
-    <div class="skill-tag">REST APIs</div>
-    <div class="skill-tag">HTML5</div>
-    <div class="skill-tag">CSS3</div>
-  </div>
-  <div class="skill-cat">Tools &amp; Platforms</div>
-  <div class="skills-grid">
-    <div class="skill-tag">MongoDB</div>
-    <div class="skill-tag">SQL / DBMS</div>
-    <div class="skill-tag">Git / GitHub</div>
-    <div class="skill-tag">Vercel</div>
-    <div class="skill-tag">Postman</div>
-    <div class="skill-tag">Agile</div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ Notable Works ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="col3">
-    <div class="project-card">
-      <div class="project-num">01</div>
-      <div class="project-stack">React.js · Node.js · JS</div>
-      <div class="project-title">Real-Time Chat Application</div>
-      <div class="project-body">A responsive real-time chat application built with component-based architecture and efficient state management. Demonstrates clean code practices, frontend debugging, and deployment.</div>
-      <div class="project-links">
-        <a href="https://github.com/Starlord786" class="proj-link" target="_blank">GitHub ↗</a>
-        <span class="soon-badge">Live Soon</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-num">02</div>
-      <div class="project-stack">React · Next.js · MongoDB · APIs</div>
-      <div class="project-title">Hybix Client Projects</div>
-      <div class="project-body">Multiple full-stack web solutions delivered for real clients — handling complete lifecycle from design to production. RESTful APIs, MongoDB integration and responsive frontends.</div>
-      <div class="project-links">
-        <a href="https://hybixgroups.com" class="proj-link" target="_blank">Live ↗</a>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-num">03</div>
-      <div class="project-stack">Next.js · Tailwind · Vercel</div>
-      <div class="project-title">hybixgroups.com</div>
-      <div class="project-body">Official Hybix company website designed and developed to showcase services and attract clients. Responsive layouts, performance-optimised, and tuned for SEO discoverability.</div>
-      <div class="project-links">
-        <a href="https://hybixgroups.com" class="proj-link" target="_blank">Live ↗</a>
-        <a href="https://github.com/Starlord786" class="proj-link" target="_blank">GitHub ↗</a>
+    <div class="hero-name">Mohammed<br>Shaban</div>
+    <div class="hero-title">Full Stack Dev <span>//</span> Java <span>//</span> Co-Founder @ Hybix</div>
+    <div class="hero-bottom">
+      <div class="hero-bio">Building production-grade software for real clients since 2024. Co-founded Hybix — a student-run tech venture in Tamil Nadu. B.E. CSE '27.</div>
+      <div class="hero-links">
+        <a href="https://github.com/Starlord786" class="hero-link" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/mohammed-shaban-434188291" class="hero-link" target="_blank">LinkedIn</a>
+        <a href="https://hybixgroups.com" class="hero-link" target="_blank">Hybix</a>
+        <a href="https://leetcode.com/u/Mohammed_Shaban/" class="hero-link" target="_blank">LeetCode</a>
+        <a href="mailto:imshabanoffl@gmail.com" class="hero-link">Email</a>
       </div>
     </div>
   </div>
 
-  <!-- HYBIX STARTUP -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ The Hybix Chronicle ✦</span>
-    <hr class="section-rule">
+  <div class="stats">
+    <div class="stat"><span class="stat-n">3+</span><span class="stat-l">Real Clients</span></div>
+    <div class="stat"><span class="stat-n">7.56</span><span class="stat-l">CGPA</span></div>
+    <div class="stat"><span class="stat-n">2+</span><span class="stat-l">Yrs Building</span></div>
+    <div class="stat"><span class="stat-n">9+</span><span class="stat-l">LC Problems</span></div>
   </div>
+
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// About</div><div class="sh-line rev"></div></div>
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-headline">A Student Who Ships to Production</div>
+      <div class="about-body">While most peers build apps for assignments, Mohammed co-founded Hybix and delivers real full-stack solutions to real clients. Leading end-to-end development from requirements to production — React, Next.js, Node.js, MongoDB — the full stack, no shortcuts. A 2nd year CSE student at AAA College of Engineering, maintaining a 7.56 CGPA with zero backlogs while running an active tech startup.</div>
+    </div>
+    <div class="about-right">
+      <div class="terminal-block">
+        <div><span class="prompt">$ </span><span class="val">whoami</span></div>
+        <div><span class="dim">> </span>Mohammed Shaban</div>
+        <div style="margin-top:8px;"><span class="prompt">$ </span><span class="val">cat status.txt</span></div>
+        <div><span class="dim">> </span>B.E. CSE @ AAA College of Engg</div>
+        <div><span class="dim">> </span>Co-Founder, Hybix Groups</div>
+        <div><span class="dim">> </span>CGPA: 7.56 | No Active Backlogs</div>
+        <div><span class="dim">> </span>Location: Virudhunagar, TN, India</div>
+        <div><span class="dim">> </span>Graduation: July 2027</div>
+        <div style="margin-top:8px;"><span class="prompt">$ </span><span class="val">./run portfolio<span class="cursor"></span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// Stack</div><div class="sh-line rev"></div></div>
+  <div class="skills-cats">
+    <div class="skill-row">
+      <div class="skill-cat-label">Languages</div>
+      <div class="skill-tags">
+        <div class="stag">JavaScript</div><div class="stag">Java</div><div class="stag">Python</div><div class="stag">C</div><div class="stag">C++</div>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat-label">Frameworks</div>
+      <div class="skill-tags">
+        <div class="stag cyan">React.js</div><div class="stag cyan">Next.js</div><div class="stag cyan">Node.js</div><div class="stag cyan">Express.js</div><div class="stag cyan">Tailwind CSS</div><div class="stag cyan">REST APIs</div><div class="stag cyan">HTML5</div><div class="stag cyan">CSS3</div>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat-label">Tools</div>
+      <div class="skill-tags">
+        <div class="stag">MongoDB</div><div class="stag">SQL</div><div class="stag">Git</div><div class="stag">GitHub</div><div class="stag">Vercel</div><div class="stag">Postman</div><div class="stag">Agile</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// Projects</div><div class="sh-line rev"></div></div>
+  <div class="proj-grid">
+    <div class="proj-card" data-n="01">
+      <div class="proj-stack">React.js · Node.js · JavaScript</div>
+      <div class="proj-title">Real-Time Chat Application</div>
+      <div class="proj-body">Responsive real-time chat with component-based architecture and efficient state management. Clean code practices, frontend debugging, and full deployment.</div>
+      <div class="proj-links">
+        <a href="https://github.com/Starlord786" class="plink" target="_blank">GitHub ↗</a>
+        <span class="soon">Live Soon</span>
+      </div>
+    </div>
+    <div class="proj-card" data-n="02">
+      <div class="proj-stack">React · Next.js · MongoDB · REST APIs</div>
+      <div class="proj-title">Hybix Client Projects</div>
+      <div class="proj-body">Multiple full-stack solutions for real clients. RESTful APIs, MongoDB integration, responsive frontends — complete lifecycle from design to production deployment.</div>
+      <div class="proj-links">
+        <a href="https://hybixgroups.com" class="plink amber" target="_blank">Live ↗</a>
+      </div>
+    </div>
+    <div class="proj-card" data-n="03">
+      <div class="proj-stack">Next.js · Tailwind CSS · Vercel</div>
+      <div class="proj-title">hybixgroups.com</div>
+      <div class="proj-body">Official Hybix company website. Responsive layouts, performance-optimised, SEO-tuned. Designed and developed end-to-end from scratch.</div>
+      <div class="proj-links">
+        <a href="https://hybixgroups.com" class="plink amber" target="_blank">Live ↗</a>
+        <a href="https://github.com/Starlord786" class="plink" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// Hybix Startup</div><div class="sh-line rev"></div></div>
   <div class="hybix-box">
-    <span class="hybix-corner tl">★ STARTUP</span>
-    <span class="hybix-corner tr">JAN 2024 — PRESENT</span>
-    <span class="hybix-corner bl">VIRUDHUNAGAR, TN</span>
-    <span class="hybix-corner br">hybixgroups.com</span>
-    <div class="hybix-headline">Co-Founder &amp; Software Developer</div>
-    <div class="hybix-sub">Hybix Student Startup &bull; Full-Stack Technology Venture</div>
-    <div class="hybix-body">
-      Co-founded Hybix — a student-run technology venture delivering full-stack web solutions and software products for real clients. Led end-to-end project development from requirement gathering all the way to production deployment. Managed a collaborative engineering team applying Agile practices and version control across multiple concurrent projects.
-    </div>
-    <ul class="hybix-bullets">
-      <li>Real client delivery from day one</li>
-      <li>End-to-end project ownership</li>
-      <li>Agile team management</li>
-      <li>Requirement gathering &amp; client communication</li>
-      <li>Production deployments on Vercel</li>
-      <li>Full-stack architecture design</li>
-    </ul>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ Credentials &amp; Certifications ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="col2">
-    <div class="cert-card">
-      <div class="cert-name">C Programming</div>
-      <div class="cert-issuer">Ebox</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-name">UI / UX for Beginners</div>
-      <div class="cert-issuer">Great Learning Academy</div>
+    <div class="hybix-inner">
+      <div class="hybix-label">★ Student Startup · Virudhunagar, Tamil Nadu, India</div>
+      <div class="hybix-headline">
+        <span class="hy">HY</span><span class="bix">BIX</span> <span class="rest">Groups</span>
+      </div>
+      <div class="hybix-date">Co-Founder &amp; Software Developer · Jan 2024 — Present</div>
+      <div class="hybix-cols">
+        <div class="hybix-desc">Co-founded Hybix — a student-run technology venture delivering full-stack web solutions for real clients. Led end-to-end development using JavaScript, React.js, Next.js, and Node.js. Managed a collaborative engineering team applying Agile practices and version control across multiple concurrent projects. Maintained client communication and translated business needs into working technical solutions.</div>
+        <ul class="hybix-list">
+          <li>Real client delivery from day one</li>
+          <li>End-to-end project ownership</li>
+          <li>Agile team management</li>
+          <li>Client requirement gathering</li>
+          <li>Production deployments on Vercel</li>
+          <li>Full-stack architecture design</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- LEETCODE -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ Competitive Programming ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="lc-box">
-    <div class="lc-badge">9+</div>
-    <div class="lc-info">
-      <div class="lc-title">LeetCode — Mohammed_Shaban</div>
-      <div class="lc-body">Actively practising Data Structures &amp; Algorithms. Problems solved and growing — the grind has begun. Target: 150+ by end of 2026.</div>
-      <a href="https://leetcode.com/u/Mohammed_Shaban/" class="lc-link" target="_blank">View Profile ↗</a>
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// Credentials</div><div class="sh-line rev"></div></div>
+  <div class="bottom-grid">
+    <div class="cert-box">
+      <div class="cert-header">// Certifications</div>
+      <div class="cert-item">
+        <div class="cert-name">C Programming</div>
+        <div class="cert-issuer">Ebox</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">UI / UX for Beginners</div>
+        <div class="cert-issuer">Great Learning Academy</div>
+      </div>
+    </div>
+    <div class="lc-box">
+      <div class="lc-header">// Competitive Programming</div>
+      <div class="lc-body">
+        <span class="lc-num">9+</span>
+        <span class="lc-sub">Problems Solved · LeetCode</span>
+        <div class="lc-note">DSA grind in progress. Actively solving problems — target 150+ by end of 2026.</div>
+        <a href="https://leetcode.com/u/Mohammed_Shaban/" class="lc-link" target="_blank">View Profile ↗</a>
+      </div>
     </div>
   </div>
 
-  <!-- CONTACT -->
-  <div class="section-header">
-    <hr class="section-rule">
-    <span class="section-title">✦ Correspondence ✦</span>
-    <hr class="section-rule">
-  </div>
-  <div class="contact-grid">
+  <div class="sh"><div class="sh-line"></div><div class="sh-label">// Contact</div><div class="sh-line rev"></div></div>
+  <div class="contact-row">
     <a href="mailto:imshabanoffl@gmail.com" class="contact-cell">
-      <span class="cc-label">Electronic Mail</span>
-      <span class="cc-val">imshabanoffl@gmail.com</span>
+      <span class="cc-l">Email</span><span class="cc-v">imshabanoffl</span>
     </a>
     <a href="https://www.linkedin.com/in/mohammed-shaban-434188291" class="contact-cell" target="_blank">
-      <span class="cc-label">LinkedIn</span>
-      <span class="cc-val">Mohammed Shaban</span>
+      <span class="cc-l">LinkedIn</span><span class="cc-v">M. Shaban</span>
     </a>
     <a href="https://github.com/Starlord786" class="contact-cell" target="_blank">
-      <span class="cc-label">GitHub</span>
-      <span class="cc-val">@Starlord786</span>
+      <span class="cc-l">GitHub</span><span class="cc-v">@Starlord786</span>
+    </a>
+    <a href="https://leetcode.com/u/Mohammed_Shaban/" class="contact-cell" target="_blank">
+      <span class="cc-l">LeetCode</span><span class="cc-v">M_Shaban</span>
     </a>
     <a href="https://hybixgroups.com" class="contact-cell" target="_blank">
-      <span class="cc-label">Company</span>
-      <span class="cc-val">hybixgroups.com</span>
+      <span class="cc-l">Company</span><span class="cc-v">Hybix Groups</span>
     </a>
   </div>
 
-  <!-- FOOTER -->
-  <div class="port-footer">
-    <span class="ornament">❦</span>
-    <p>Typeset &amp; Composed by Mohammed Shaban &bull; Virudhunagar, Tamil Nadu &bull; 2026</p>
-    <p style="margin-top:4px;">B.E. Computer Science &amp; Engineering &bull; AAA College of Engineering &bull; Expected July 2027</p>
+  <div class="footer">
+    <span class="footer-glyph">&lt;/MS&gt;</span>
+    <p>Mohammed Shaban · B.E. CSE · AAA College of Engineering · Virudhunagar</p>
+    <p>Expected Graduation: July 2027 · Built with code &amp; coffee</p>
   </div>
 
 </div>
